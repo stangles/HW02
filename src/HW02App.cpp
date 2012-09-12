@@ -1,6 +1,7 @@
 #include "cinder/app/AppBasic.h"
 #include "cinder/gl/gl.h"
 #include "TiledEllipse.h"
+#include "TiledEllipseList.h"
 
 using namespace ci;
 using namespace ci::app;
