@@ -18,7 +18,7 @@
     <ClCompile Include="..\src\HW02App.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="..\src\EllipseDominique.cpp">
+    <ClCompile Include="..\src\TiledEllipse.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
   </ItemGroup>
@@ -26,7 +26,7 @@
     <ClInclude Include="..\include\Resources.h">
       <Filter>Header Files</Filter>
     </ClInclude>
-    <ClInclude Include="..\include\EllipseDominique.h">
+    <ClInclude Include="..\include\TiledEllipse.h">
       <Filter>Header Files</Filter>
     </ClInclude>
   </ItemGroup>

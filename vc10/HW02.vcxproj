@@ -104,11 +104,11 @@
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
-    <ClCompile Include="..\src\EllipseDominique.cpp" />
+    <ClCompile Include="..\src\TiledEllipse.cpp" />
     <ClCompile Include="..\src\HW02App.cpp" />
   </ItemGroup>
   <ItemGroup>
-    <ClInclude Include="..\include\EllipseDominique.h" />
+    <ClInclude Include="..\include\TiledEllipse.h" />
     <ClInclude Include="..\include\Resources.h" />
   </ItemGroup>
   <ItemGroup>

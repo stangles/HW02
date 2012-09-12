@@ -1,6 +1,6 @@
 #include "cinder/app/AppBasic.h"
 #include "cinder/gl/gl.h"
-#include "EllipseDominique.h"
+#include "TiledEllipse.h"
 
 using namespace ci;
 using namespace ci::app;
@@ -14,13 +14,13 @@ public:
 	void draw();
 	void prepareSettings( Settings *settings );
 private:
-	EllipseDominique *my_ellipse, *her_ellipse;
+	TiledEllipse *my_ellipse, *her_ellipse;
 };
 
 void HW02App::setup()
 {
-	my_ellipse = new EllipseDominique(Vec2f(400.0f,300.0f),100.0f,50.0f);
-	//her_ellipse = new EllipseDominique(
+	my_ellipse = new TiledEllipse(Vec2f(400.0f,300.0f),100.0f,50.0f,Color8u(0,255,0));
+	her_ellipse = new TiledEllipse(Vec2f(400.0f,275.0f),100.0f,50.0f,Color8u(0,0,255));
 }
 
 void HW02App::mouseDown( MouseEvent event )
@@ -34,6 +34,7 @@ void HW02App::update()
 void HW02App::draw()
 {
 	my_ellipse->draw();
+	her_ellipse->draw();
 }
 
 void HW02App::prepareSettings( Settings *settings ){
