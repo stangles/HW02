@@ -106,12 +106,13 @@
   <ItemGroup>
     <ClCompile Include="..\src\TiledEllipse.cpp" />
     <ClCompile Include="..\src\HW02App.cpp" />
-    <ClCompile Include="..\src\TiledEllipseList.cpp" />
+    <ClCompile Include="..\src\TiledRectangle.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="..\include\TiledEllipse.h" />
     <ClInclude Include="..\include\Resources.h" />
-    <ClInclude Include="..\include\TiledEllipseList.h" />
+    <ClInclude Include="..\include\TiledRectangle.h" />
+    <ClInclude Include="..\include\TiledShape.h" />
   </ItemGroup>
   <ItemGroup>
     <ResourceCompile Include="Resources.rc" />

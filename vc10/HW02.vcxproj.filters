@@ -21,7 +21,7 @@
     <ClCompile Include="..\src\TiledEllipse.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="..\src\TiledEllipseList.cpp">
+    <ClCompile Include="..\src\TiledRectangle.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
   </ItemGroup>
@@ -32,7 +32,10 @@
     <ClInclude Include="..\include\TiledEllipse.h">
       <Filter>Header Files</Filter>
     </ClInclude>
-    <ClInclude Include="..\include\TiledEllipseList.h">
+    <ClInclude Include="..\include\TiledShape.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="..\include\TiledRectangle.h">
       <Filter>Header Files</Filter>
     </ClInclude>
   </ItemGroup>

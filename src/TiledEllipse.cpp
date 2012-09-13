@@ -3,10 +3,6 @@
 
 using namespace ci;
 
-TiledEllipse::TiledEllipse()
-{
-}
-
 TiledEllipse::TiledEllipse(Vec2f center, float x_radius, float y_radius, Color8u color)
 {
 	center_ = center;
