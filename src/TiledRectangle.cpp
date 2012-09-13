@@ -1,5 +1,4 @@
 #include "TiledRectangle.h"
-#include "cinder\Rect.h"
 
 using namespace ci;
 

@@ -1,6 +1,4 @@
 #include "cinder\gl\gl.h"
-//#include "TiledShape.h"
-#include "cinder\Rect.h"
 
 using namespace ci;
 
