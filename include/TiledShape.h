@@ -3,9 +3,8 @@
 
 class TiledShape {
 public:
-	TiledShape();
-	void update();
-	void draw();
+	virtual void update();
+	virtual void draw();
 };
 
 #endif
