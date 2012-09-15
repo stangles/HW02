@@ -1,8 +1,8 @@
 #include "cinder\gl\gl.h"
-
+#include "TiledShape.h"
 using namespace ci;
 
-class TiledRectangle {
+class TiledRectangle:public TiledShape {
 public:
 	TiledRectangle(float x1, float y1, float x2, float y2, Color8u color);
 	void update();

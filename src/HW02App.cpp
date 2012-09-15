@@ -1,5 +1,6 @@
 #include "cinder/app/AppBasic.h"
 #include "cinder/gl/gl.h"
+#include "TiledShape.h"
 #include "TiledEllipse.h"
 #include "TiledRectangle.h"
 #include "TiledCircle.h"

@@ -1,9 +1,9 @@
 #include "cinder\gl\gl.h"
-//#include "TiledShape.h"
+#include "TiledShape.h"
 
 using namespace ci;
 
-class TiledEllipse {
+class TiledEllipse:public TiledShape {
 public:
 	TiledEllipse(Vec2f center, float x_radius, float y_radius, Color8u color);
 	void update();

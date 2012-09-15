@@ -108,6 +108,7 @@
     <ClCompile Include="..\src\TiledEllipse.cpp" />
     <ClCompile Include="..\src\HW02App.cpp" />
     <ClCompile Include="..\src\TiledRectangle.cpp" />
+    <ClCompile Include="..\src\TiledShape.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="..\include\TiledCircle.h" />
