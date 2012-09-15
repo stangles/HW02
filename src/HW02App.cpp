@@ -5,6 +5,7 @@
 #include "TiledRectangle.h"
 #include "TiledCircle.h"
 #include "TiledShapeNode.h"
+#include "cinder\app\KeyEvent.h"
 
 using namespace ci;
 using namespace ci::app;
@@ -13,23 +14,27 @@ using namespace std;
 class HW02App : public AppBasic {
 public:
 	void setup();
-	void mouseDown( MouseEvent event );	
+	void keyDown(KeyEvent event);
 	void update();
 	void draw();
 	void prepareSettings( Settings *settings );
 private:
 	TiledEllipse *my_ellipse;
 	TiledShapeNode *my_node;
+	bool slash_is_pressed;
 };
 
 void HW02App::setup()
 {
 	my_ellipse = new TiledEllipse(Vec2f(400.0f,300.0f),100.0f,50.0f,Color8u(0,255,0));
 	my_node = new TiledShapeNode(my_ellipse, my_node);
+	slash_is_pressed = false;
 }
 
-void HW02App::mouseDown( MouseEvent event )
+void HW02App::keyDown( KeyEvent event )
 {
+	if(event.getCode() == event.KEY_SLASH) 
+		slash_is_pressed = !slash_is_pressed;
 }
 
 void HW02App::update()
@@ -38,7 +43,9 @@ void HW02App::update()
 
 void HW02App::draw()
 {
-	my_node->draw();
+	gl::clear();
+	if(slash_is_pressed)
+		my_node->draw();
 }
 
 void HW02App::prepareSettings( Settings *settings ){
