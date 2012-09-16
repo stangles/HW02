@@ -3,6 +3,7 @@
 class TiledShapeNode {
 public:
 	TiledShapeNode(TiledShape *data, TiledShapeNode *next);
+	TiledShapeNode* next();
 	void update();
 	void draw();
 private:

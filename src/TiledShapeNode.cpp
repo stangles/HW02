@@ -6,6 +6,11 @@ TiledShapeNode::TiledShapeNode(TiledShape *data, TiledShapeNode *next)
 	next_ = next;
 }
 
+TiledShapeNode* TiledShapeNode::next()
+{
+	return next_;
+}
+
 void TiledShapeNode::update()
 {
 	data_->update();
