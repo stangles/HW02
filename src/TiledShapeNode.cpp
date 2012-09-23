@@ -1,17 +1,10 @@
 #include "TiledShapeNode.h"
 
-TiledShapeNode::TiledShapeNode(TiledShape *data)
-{
-	data_ = data;
-	prev_ = NULL;
-	next_ = NULL;
-}
-
-TiledShapeNode::TiledShapeNode(TiledShapeNode *prev, TiledShapeNode *next)
+TiledShapeNode::TiledShapeNode()
 {
 	data_ = NULL;
-	prev_ = prev;
-	next_ = next;
+	prev_ = NULL;
+	next_ = NULL;
 }
 
 TiledShapeNode::TiledShapeNode(TiledShape *data, TiledShapeNode *prev, TiledShapeNode *next)
@@ -19,6 +12,16 @@ TiledShapeNode::TiledShapeNode(TiledShape *data, TiledShapeNode *prev, TiledShap
 	data_ = data;
 	prev_ = prev;
 	next_ = next;
+}
+
+void TiledShapeNode::setData(TiledShape *data)
+{
+	data_ = data;
+}
+
+TiledShape* TiledShapeNode::getData()
+{
+	return this->data_;
 }
 
 void TiledShapeNode::setPrev(TiledShapeNode *prev)
@@ -31,12 +34,12 @@ void TiledShapeNode::setNext(TiledShapeNode *next)
 	this->next_ = next;
 }
 
-TiledShapeNode* TiledShapeNode::prev()
+TiledShapeNode* TiledShapeNode::getPrev()
 {
 	return prev_;
 }
 
-TiledShapeNode* TiledShapeNode::next()
+TiledShapeNode* TiledShapeNode::getNext()
 {
 	return next_;
 }

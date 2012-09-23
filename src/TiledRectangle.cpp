@@ -11,6 +11,11 @@ TiledRectangle::TiledRectangle(float x1, float y1, float x2, float y2, Color8u c
 	color_ = color;
 }
 
+bool TiledRectangle::isInside(Vec2i mouse_pos)
+{
+	return ((mouse_pos.x >= x1_) && (mouse_pos.x <= x2_)
+		&& (mouse_pos.y >= y1_) && (mouse_pos.y <= y2_));
+}
 void TiledRectangle::update()
 {
 }
@@ -18,5 +23,5 @@ void TiledRectangle::update()
 void TiledRectangle::draw()
 {
 	gl::color(color_);
-	gl::drawSolidRoundedRect(Rectf(x1_, y1_, x2_, y2_), 10.0f);
+	gl::drawSolidRect(Rectf(x1_, y1_, x2_, y2_));
 }

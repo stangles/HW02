@@ -8,6 +8,7 @@ public:
 	TiledCircle(Vec2f center, float radius, Color8u color);
 	void update();
 	void draw();
+	bool isInside(Vec2i mouse_pos);
 private:
 	Vec2f center_;
 	float radius_;

@@ -3,13 +3,14 @@
 
 class TiledShapeNode {
 public:
-	TiledShapeNode(TiledShape *data);
-	TiledShapeNode(TiledShapeNode *prev, TiledShapeNode *next);
+	TiledShapeNode();
 	TiledShapeNode(TiledShape *data, TiledShapeNode *prev, TiledShapeNode *next);
+	void setData(TiledShape *data);
+	TiledShape* getData();
 	void setPrev(TiledShapeNode *prev);
 	void setNext(TiledShapeNode *next);
-	TiledShapeNode* prev();
-	TiledShapeNode* next();
+	TiledShapeNode* getPrev();
+	TiledShapeNode* getNext();
 	void update();
 	void draw();
 private:
