@@ -19,6 +19,7 @@ public:
 	void generateList();
 	void keyDown(KeyEvent event);
 	void mouseDown(MouseEvent event);
+	void mouseDrag(MouseEvent event);
 	void update();
 	void draw();
 	void drawList();
@@ -26,6 +27,7 @@ public:
 	void listClickHandler(Vec2i mouse_pos);
 	void bringToFront(TiledShapeNode *front);
 private:
+	int last_x_pos, last_y_pos;
 	bool slash_is_pressed;
 	TextBox *win_text;
 	gl::Texture *win_texture;
@@ -46,6 +48,9 @@ void HW02App::setup()
 	win_texture = new gl::Texture(win_text->render());
 
 	generateList();
+
+	last_x_pos = 0;
+	last_y_pos = 0;
 }
 
 void HW02App::generateList()
@@ -110,6 +115,13 @@ void HW02App::mouseDown(MouseEvent event)
 	listClickHandler(event.getPos());
 }
 
+void HW02App::mouseDrag(MouseEvent event)
+{
+	TiledShape *tmp = sentinel->getPrev()->getData();
+	if(tmp->isInside(event.getPos()))
+		tmp->dragMove(event.getPos());
+}
+
 void HW02App::update()
 {
 }
@@ -122,14 +134,13 @@ void HW02App::draw()
 	{
 		gl::draw(*win_texture);
 	}
-		
 }
 
 void HW02App::drawList()
 {
 	TiledShapeNode *cur = sentinel->getNext();
 	do {
-		cur->getData()->draw();
+		cur->getData()->draw(getMousePos());
 		cur = cur->getNext();
 	} while(cur != sentinel);
 }
