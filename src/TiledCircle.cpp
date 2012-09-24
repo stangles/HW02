@@ -3,7 +3,7 @@
 
 using namespace ci;
 
-TiledCircle::TiledCircle(Vec2f center, float radius, Color8u color)
+TiledCircle::TiledCircle(Vec2f center, float radius, ColorA color)
 {
 	center_ = center;
 	radius_ = radius;
@@ -19,7 +19,7 @@ void TiledCircle::update()
 void TiledCircle::draw(Vec2i mouse_pos)
 {
 	if(this->isInside(mouse_pos))
-		gl::color(Color8u(255,255,255));
+		gl::color(ColorA(1.0f,1.0f,1.0f,0.7f));
 	else
 		gl::color(color_);
 	gl::drawSolidCircle(center_, radius_);

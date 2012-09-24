@@ -2,7 +2,7 @@
 
 using namespace ci;
 
-TiledRectangle::TiledRectangle(float x1, float y1, float x2, float y2, Color8u color)
+TiledRectangle::TiledRectangle(float x1, float y1, float x2, float y2, ColorA color)
 {
 	x1_ = x1;
 	y1_ = y1;
@@ -25,7 +25,7 @@ void TiledRectangle::update()
 void TiledRectangle::draw(Vec2i mouse_pos)
 {
 	if(this->isInside(mouse_pos))
-		gl::color(Color8u(255,255,255));
+		gl::color(ColorA(1.0f,1.0f,1.0f,0.7f));
 	else
 		gl::color(color_);
 	gl::drawSolidRect(Rectf(x1_, y1_, x2_, y2_));

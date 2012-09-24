@@ -44,7 +44,7 @@ void HW02App::setup()
 	win_text->setSize(Vec2i(800,600));
 	win_text->setAlignment(TextBox::CENTER);
 	win_text->setText("Hello!\nClick and drag objects. Use 'r' to reverse their order. Press '?' to show and hide this message");
-	win_text->setBackgroundColor(ColorA(0.5f,0.5f,0.5f,0.1f));
+	win_text->setBackgroundColor(ColorA(0.5f,0.5f,0.5f,0.8f));
 	win_text->setFont(Font("Tahoma", 18));
 	win_texture = new gl::Texture(win_text->render());
 
@@ -52,6 +52,9 @@ void HW02App::setup()
 
 	last_x_pos = 0;
 	last_y_pos = 0;
+
+	//for transparency
+	gl::enableAlphaBlending();
 }
 
 void HW02App::generateList()
@@ -71,10 +74,10 @@ void HW02App::generateList()
 	node_three->setNext(node_four);
 	node_four->setPrev(node_three);
 	node_four->setNext(sentinel);
-	node_one->setData(new TiledRectangle(350.0f,250.0f,450.0f,300.0f,Color8u(0,255,0)));
-	node_two->setData(new TiledRectangle(400.0f,250.0f,450.0f,350.0f,Color8u(0,0,255)));
-	node_three->setData(new TiledCircle(Vec2f(500.0f,200.0f),100.0f,Color8u(255,0,0)));
-	node_four->setData(new TiledCircle(Vec2f(300.0f,400.0f),100.0f,Color8u(0,255,255)));
+	node_one->setData(new TiledRectangle(350.0f,250.0f,450.0f,300.0f,ColorA(0.0f,0.5f,0.0f,0.4f)));
+	node_two->setData(new TiledRectangle(400.0f,250.0f,450.0f,350.0f,ColorA(0.0f,0.0f,0.5f,0.4f)));
+	node_three->setData(new TiledCircle(Vec2f(500.0f,200.0f),100.0f,ColorA(0.5f,0.0f,0.0f,0.4f)));
+	node_four->setData(new TiledCircle(Vec2f(300.0f,400.0f),100.0f,ColorA(0.0f,0.5f,0.5f,0.4f)));
 }
 
 void HW02App::listClickHandler(Vec2i mouse_pos)

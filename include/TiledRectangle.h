@@ -5,7 +5,7 @@ using namespace ci;
 
 class TiledRectangle:public TiledShape {
 public:
-	TiledRectangle(float x1, float y1, float x2, float y2, Color8u color);
+	TiledRectangle(float x1, float y1, float x2, float y2, ColorA color);
 	void update();
 	void draw(Vec2i mouse_pos);
 	bool isInside(Vec2i mouse_pos);
@@ -13,5 +13,5 @@ public:
 private:
 	int last_x_pos,last_y_pos;
 	float x1_, y1_, x2_, y2_;
-	Color8u color_;
+	ColorA color_;
 };
