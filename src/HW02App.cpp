@@ -1,7 +1,6 @@
 #include "cinder\app\AppBasic.h"
 #include "cinder\gl\gl.h"
 #include "TiledShape.h"
-#include "TiledEllipse.h"
 #include "TiledRectangle.h"
 #include "TiledCircle.h"
 #include "TiledShapeNode.h"
@@ -58,9 +57,9 @@ void HW02App::generateList()
 	sentinel = new TiledShapeNode();
 	node_one = new TiledShapeNode();
 	node_two = new TiledShapeNode();
-	node_one->setData(new TiledCircle(Vec2f(400.0f,300.0f),50.0f,Color8u(0,255,0)));
+	node_one->setData(new TiledRectangle(350.0f,250.0f,450.0f,300.0f,Color8u(0,255,0)));
 	node_one->setPrev(sentinel);
-	node_two->setData(new TiledCircle(Vec2f(450.0f,300.0f),50.0f,Color8u(0,0,255)));
+	node_two->setData(new TiledRectangle(400.0f,250.0f,450.0f,350.0f,Color8u(0,0,255)));
 	node_two->setPrev(node_one);
 	node_two->setNext(sentinel);
 	sentinel->setPrev(node_two);
