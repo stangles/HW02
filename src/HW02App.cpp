@@ -1,3 +1,7 @@
+/*
+* Author: Steven Angles
+* 
+*/
 #include "cinder\app\AppBasic.h"
 #include "cinder\gl\gl.h"
 #include "TiledShape.h"
@@ -44,7 +48,8 @@ void HW02App::setup()
 	win_text->setSize(Vec2i(800,600));
 	win_text->setAlignment(TextBox::CENTER);
 	win_text->setText("Hello!\nClick and drag objects. Use 'r' to reverse their order. Press '?' to show and hide this message");
-	win_text->setBackgroundColor(ColorA(0.5f,0.5f,0.5f,0.8f));
+	win_text->setBackgroundColor(ColorA(0.5f,0.5f,0.5f));
+	win_text->setColor(ColorA(1.0f,1.0f,1.0f));
 	win_text->setFont(Font("Tahoma", 18));
 	win_texture = new gl::Texture(win_text->render());
 
@@ -80,6 +85,9 @@ void HW02App::generateList()
 	node_four->setData(new TiledCircle(Vec2f(300.0f,400.0f),100.0f,ColorA(0.0f,0.5f,0.5f,0.4f)));
 }
 
+/*
+* Handling for the list when the mouse is clicked
+*/
 void HW02App::listClickHandler(Vec2i mouse_pos)
 {
 	TiledShapeNode *cur = sentinel->getPrev(); //since those drawn last occlude those drawn first
@@ -94,6 +102,9 @@ void HW02App::listClickHandler(Vec2i mouse_pos)
 	} while (cur != sentinel && !exit);
 }
 
+/*
+* Reorders the list
+*/
 void HW02App::reverse()
 {
 	TiledShapeNode *cur = sentinel;
@@ -107,6 +118,9 @@ void HW02App::reverse()
 
 }
 
+/*
+* Idea borrow from Cooper Riley: github.com/rileycr
+*/
 void HW02App::bringToFront(TiledShapeNode *front)
 {
 	//Remove selected from list
@@ -122,6 +136,9 @@ void HW02App::bringToFront(TiledShapeNode *front)
 	front->getNext()->setPrev(front);
 }
 
+/*
+* Called when a key board button is pressed
+*/
 void HW02App::keyDown(KeyEvent event)
 {
 	if(event.getChar() == '?')
@@ -130,11 +147,17 @@ void HW02App::keyDown(KeyEvent event)
 		r_is_pressed = true;
 }
 
+/*
+* Called when the mouse is clicked
+*/
 void HW02App::mouseDown(MouseEvent event)
 {
 	listClickHandler(event.getPos());
 }
 
+/*
+* Fires when mouse is clicked and moved simultaneously
+*/
 void HW02App::mouseDrag(MouseEvent event)
 {
 	TiledShape *tmp = sentinel->getPrev()->getData();
@@ -161,6 +184,9 @@ void HW02App::draw()
 	}
 }
 
+/*
+* Called from draw() so it's a bit cleaner
+*/
 void HW02App::drawList()
 {
 	TiledShapeNode *cur = sentinel->getNext();
@@ -173,6 +199,7 @@ void HW02App::drawList()
 void HW02App::prepareSettings(Settings *settings){
     settings->setWindowSize(800, 600);
     settings->setFrameRate(60.0f);
+	settings->setResizable(false);
 }
 
 CINDER_APP_BASIC(HW02App, RendererGl)

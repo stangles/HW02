@@ -1,3 +1,6 @@
+/*
+* Author: Steven Angles
+*/
 #include "cinder\gl\gl.h"
 #include "TiledShape.h"
 

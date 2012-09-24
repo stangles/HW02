@@ -1,3 +1,6 @@
+/*
+* Author: Steven Angles
+*/
 #include "TiledRectangle.h"
 
 using namespace ci;
@@ -25,7 +28,7 @@ void TiledRectangle::update()
 void TiledRectangle::draw(Vec2i mouse_pos)
 {
 	if(this->isInside(mouse_pos))
-		gl::color(ColorA(1.0f,1.0f,1.0f,0.7f));
+		gl::color(ColorA(1.0f,1.0f,1.0f,0.7f)); //Highlight if mouse is hovering over object
 	else
 		gl::color(color_);
 	gl::drawSolidRect(Rectf(x1_, y1_, x2_, y2_));
