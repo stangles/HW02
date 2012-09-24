@@ -25,23 +25,25 @@ public:
 	void prepareSettings(Settings *settings);
 	void listClickHandler(Vec2i mouse_pos);
 	void bringToFront(TiledShapeNode *front);
+	void reverse();
 private:
 	int last_x_pos, last_y_pos;
-	bool slash_is_pressed;
+	bool question_is_pressed,r_is_pressed;
 	TextBox *win_text;
 	gl::Texture *win_texture;
 	TiledShapeNode *sentinel;
-	TiledShapeNode *node_one,*node_two;
+	TiledShapeNode *node_one,*node_two,*node_three,*node_four;
 };
 
 void HW02App::setup()
 {
+	r_is_pressed = false;
 	//text box setup
-	slash_is_pressed = true;
+	question_is_pressed = true;
 	win_text = new TextBox();
 	win_text->setSize(Vec2i(800,600));
 	win_text->setAlignment(TextBox::CENTER);
-	win_text->setText("Hello, World!");
+	win_text->setText("Hello!\nClick and drag objects. Use 'r' to reverse their order. Press '?' to show and hide this message");
 	win_text->setBackgroundColor(ColorA(0.5f,0.5f,0.5f,0.1f));
 	win_text->setFont(Font("Tahoma", 18));
 	win_texture = new gl::Texture(win_text->render());
@@ -57,15 +59,22 @@ void HW02App::generateList()
 	sentinel = new TiledShapeNode();
 	node_one = new TiledShapeNode();
 	node_two = new TiledShapeNode();
-	node_one->setData(new TiledRectangle(350.0f,250.0f,450.0f,300.0f,Color8u(0,255,0)));
-	node_one->setPrev(sentinel);
-	node_two->setData(new TiledRectangle(400.0f,250.0f,450.0f,350.0f,Color8u(0,0,255)));
-	node_two->setPrev(node_one);
-	node_two->setNext(sentinel);
-	sentinel->setPrev(node_two);
+	node_three = new TiledShapeNode();
+	node_four = new TiledShapeNode();
+	sentinel->setPrev(node_four);
 	sentinel->setNext(node_one);
+	node_one->setPrev(sentinel);
 	node_one->setNext(node_two);
-
+	node_two->setPrev(node_one);
+	node_two->setNext(node_three);
+	node_three->setPrev(node_two);
+	node_three->setNext(node_four);
+	node_four->setPrev(node_three);
+	node_four->setNext(sentinel);
+	node_one->setData(new TiledRectangle(350.0f,250.0f,450.0f,300.0f,Color8u(0,255,0)));
+	node_two->setData(new TiledRectangle(400.0f,250.0f,450.0f,350.0f,Color8u(0,0,255)));
+	node_three->setData(new TiledCircle(Vec2f(500.0f,200.0f),100.0f,Color8u(255,0,0)));
+	node_four->setData(new TiledCircle(Vec2f(300.0f,400.0f),100.0f,Color8u(0,255,255)));
 }
 
 void HW02App::listClickHandler(Vec2i mouse_pos)
@@ -78,9 +87,21 @@ void HW02App::listClickHandler(Vec2i mouse_pos)
 			bringToFront(cur);
 			exit = true;
 		}
-
 		cur = cur->getPrev();
 	} while (cur != sentinel && !exit);
+}
+
+void HW02App::reverse()
+{
+	TiledShapeNode *cur = sentinel;
+	TiledShapeNode *tmp;
+	do {
+		tmp = cur->getNext();
+		cur->setNext(cur->getPrev());
+		cur->setPrev(tmp);
+		cur = tmp;
+	} while(cur != sentinel);
+
 }
 
 void HW02App::bringToFront(TiledShapeNode *front)
@@ -100,13 +121,10 @@ void HW02App::bringToFront(TiledShapeNode *front)
 
 void HW02App::keyDown(KeyEvent event)
 {
-	int key_code = event.getCode();
-	switch(key_code) 
-	{
-	case event.KEY_SLASH:
-		slash_is_pressed = !slash_is_pressed;
-		break;
-	}
+	if(event.getChar() == '?')
+		question_is_pressed = !question_is_pressed;
+	if(event.getCode() == event.KEY_r)
+		r_is_pressed = true;
 }
 
 void HW02App::mouseDown(MouseEvent event)
@@ -123,13 +141,18 @@ void HW02App::mouseDrag(MouseEvent event)
 
 void HW02App::update()
 {
+	if(r_is_pressed)
+	{
+		reverse();
+		r_is_pressed = false;
+	}
 }
 
 void HW02App::draw()
 {
 	gl::clear();
 	drawList();
-	if(slash_is_pressed) 
+	if(question_is_pressed) 
 	{
 		gl::draw(*win_texture);
 	}
